@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  speed: 0.5
+  speed: 2
+  hitTreshold: 0.2
   targetEnemy: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
 --- !u!65 &8598439512925038165

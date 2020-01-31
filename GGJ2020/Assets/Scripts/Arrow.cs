@@ -22,9 +22,4 @@ public class Arrow : Projectile
         float angle = Vector3.Angle(direction,Vector3.up);
         transform.rotation = Quaternion.Euler(0,0,angle);
     }
-
-    public override void OnCollisionEnter(Collision collision)
-    {
-        base.OnCollisionEnter(collision);
-    }
 }
