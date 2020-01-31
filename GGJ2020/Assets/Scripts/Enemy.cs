@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	[HideInInspector]
 	public int health;
+	public int damage;
 
 	public Scene scene;
 	
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 
 	}
 
-	public virtual void OnHit(Tower hittingTower)
+	public virtual void OnDamageTaken(Tower hittingTower)
 	{
 
 	}

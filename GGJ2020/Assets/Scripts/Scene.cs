@@ -31,6 +31,16 @@ public class Scene : MonoBehaviour
 		}
     }
 
+	public void OnTowerDestroyed(Tower tower)
+	{
+
+	}
+
+	public void OnEnemyKilled(Enemy enemy)
+	{
+
+	}
+
 	public void SpawnEnemy()
 	{
 		Goblin newGoblin = Instantiate(Prefabs.GoblinPrefab).GetComponent<Goblin>();
@@ -41,5 +51,15 @@ public class Scene : MonoBehaviour
 
 		enemies.Add(newGoblin);
 		newGoblin.transform.SetParent(enemiesParent);
+	}
+
+	public Tower GetClosestTowerToPos(Vector3 position, float aggroRange)
+	{
+		Tower result = towers.OrderBy(tower => Vector3.Distance(tower.transform.position, position)).First();
+
+		if (Vector3.Distance(result.transform.position, position) > aggroRange)
+			return null;
+
+		return result;
 	}
 }

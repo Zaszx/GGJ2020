@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6529643710522746272}
   - component: {fileID: 3240648608741542328}
-  - component: {fileID: 6407873997193774763}
+  - component: {fileID: 2403756956072619221}
   m_Layer: 0
-  m_Name: ArcherTower
+  m_Name: BaseTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalPosition: {x: 0.45, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 574290420346353414}
+  - {fileID: 5178279308737340912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9597633, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.06844115, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6407873997193774763
+--- !u!114 &2403756956072619221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,14 +90,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659884018268865425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebe82f31debd3d4fa8771a59a5c6a07, type: 3}
+  m_Script: {fileID: 11500000, guid: 72466c5be7b92774d8869bd90bb5f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scene: {fileID: 0}
-  healthbar: {fileID: 3187303100281999736}
-  health: 100
-  damage: 20
---- !u!1001 &8593290341747487034
+  healthbar: {fileID: 7790990720174867342}
+  health: 200
+  damage: 40
+--- !u!1001 &3991662104599552972
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -112,17 +112,17 @@ PrefabInstance:
     - target: {fileID: 8122745579064264252, guid: 7e5cea8d0f01c5d4698418b5862120b5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.3652804
       objectReference: {fileID: 0}
     - target: {fileID: 8122745579064264252, guid: 7e5cea8d0f01c5d4698418b5862120b5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.8186202
       objectReference: {fileID: 0}
     - target: {fileID: 8122745579064264252, guid: 7e5cea8d0f01c5d4698418b5862120b5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.2876403
       objectReference: {fileID: 0}
     - target: {fileID: 8122745579064264252, guid: 7e5cea8d0f01c5d4698418b5862120b5,
         type: 3}
@@ -176,17 +176,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e5cea8d0f01c5d4698418b5862120b5, type: 3}
---- !u!4 &574290420346353414 stripped
+--- !u!4 &5178279308737340912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8122745579064264252, guid: 7e5cea8d0f01c5d4698418b5862120b5,
     type: 3}
-  m_PrefabInstance: {fileID: 8593290341747487034}
+  m_PrefabInstance: {fileID: 3991662104599552972}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3187303100281999736 stripped
+--- !u!114 &7790990720174867342 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6591602174577877058, guid: 7e5cea8d0f01c5d4698418b5862120b5,
     type: 3}
-  m_PrefabInstance: {fileID: 8593290341747487034}
+  m_PrefabInstance: {fileID: 3991662104599552972}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
