@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	public Scene scene;
 	public bool isPlayer1;
+
+	public float repairCooldown = 0.3f;
+	private float currentRepairCooldown = 0;
 
     void Start()
     {
@@ -14,7 +18,23 @@ public class Player : MonoBehaviour
     void Update()
     {
 		HandleMovement();
-    }
+		HandleRepair();
+
+	}
+
+	void HandleRepair()
+	{
+		currentRepairCooldown += Time.deltaTime;
+		if(currentRepairCooldown >= repairCooldown)
+		{
+			List<Tower> towersInRange = scene.GetTowersInRange(transform.position, 0.1f);
+			towersInRange.ForEach(t => t.OnRepaired(1));
+			if(towersInRange.Count > 0)
+			{
+				currentRepairCooldown = 0;
+			}
+		}
+	}
 
 	void HandleMovement()
 	{

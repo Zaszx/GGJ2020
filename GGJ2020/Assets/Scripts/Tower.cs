@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
 	public int health;
+	private int maxHealth;
 	public int damage;
 	public float range;
 	public Transform target;
@@ -16,6 +17,8 @@ public class Tower : MonoBehaviour
     {
 		scene = GameObject.FindObjectOfType<Scene>();
 		healthbar.Init(health);
+
+		maxHealth = health;
     }
 
     public virtual void Update()
@@ -35,6 +38,12 @@ public class Tower : MonoBehaviour
 		{
 			healthbar.SetHealth(health);
 		}
+	}
+
+	public virtual void OnRepaired(int repairAmount)
+	{
+		health = Mathf.Min(maxHealth, health + repairAmount);
+		healthbar.SetHealth(health);
 	}
 
     public virtual void SetTarget()
