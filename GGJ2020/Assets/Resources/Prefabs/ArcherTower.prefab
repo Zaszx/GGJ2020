@@ -93,10 +93,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebe82f31debd3d4fa8771a59a5c6a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 0}
-  healthbar: {fileID: 3187303100281999736}
   health: 100
   damage: 20
+  range: 5
+  target: {fileID: 0}
+  healthbar: {fileID: 3187303100281999736}
+  scene: {fileID: 0}
 --- !u!1001 &8593290341747487034
 PrefabInstance:
   m_ObjectHideFlags: 0

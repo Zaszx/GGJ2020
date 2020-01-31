@@ -7,9 +7,6 @@ public class ArcherTower : Tower
     public override void Start()
     {
 		base.Start();
-        Health = 100;
-        Damage = 8;
-        Range = 5;
         SetTarget();
         InvokeRepeating("Attack", 1.0f, 1.0f);
     }

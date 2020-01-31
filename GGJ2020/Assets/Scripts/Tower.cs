@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public int Health { get; set; }
-    public int Damage { get; set; }
-    public float Range { get; set; }
-    public Transform Target { get; set; }
+	public int health;
+	public int damage;
+	public float range;
+	public Transform target;
 	public Healthbar healthbar;
 
     public Scene scene;
@@ -28,6 +28,7 @@ public class Tower : MonoBehaviour
 		health = health - enemy.damage;
 		if(health <= 0)
 		{
+			healthbar.SetHealth(0);
 			scene.OnTowerDestroyed(this);
 		}
 		else
@@ -42,10 +43,10 @@ public class Tower : MonoBehaviour
         foreach (Transform e in scene.enemiesParent)
         {
             float dist = Vector3.Distance(e.position, this.transform.position);
-            if (min_distance < dist && dist < Range)
+            if (min_distance < dist && dist < range)
             {
                 min_distance = dist;
-                this.Target = e;
+                this.target = e;
             }
 
         }
@@ -53,13 +54,13 @@ public class Tower : MonoBehaviour
 
     public virtual void Attack()
     {
-        if (Target == null)
+        if (target == null)
         {
             Debug.Log("No Target in range for " + this.transform.name);
             return;
         }
-        Enemy enemy = Target.GetComponent<Enemy>();
-        enemy.health -= Damage;
+        Enemy enemy = target.GetComponent<Enemy>();
+        enemy.health -= damage;
         return;
     }
 }
