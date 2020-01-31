@@ -6,13 +6,13 @@ public class Enemy : MonoBehaviour
 {
 	[HideInInspector]
 	public int health;
+	public int damage;
 
 	public Scene scene;
 	
     public virtual void Start()
     {
-        
-    }
+	}
 
 	public virtual void OnSpawn()
 	{
