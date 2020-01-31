@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
 	public float range;
 	public Transform target;
 	public Healthbar healthbar;
+    public GameObject ProjectilePrefab;
 
     public Scene scene;
 
@@ -63,12 +64,10 @@ public class Tower : MonoBehaviour
 
     public virtual void Attack()
     {
-        if (target == null)
+        if (target != null)
         {
-            Debug.Log("No Target in range for " + this.transform.name);
-            return;
+            GameObject projectile = GameObject.Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            projectile.GetComponent<Projectile>().targetEnemy = target;
         }
-        Enemy enemy = target.GetComponent<Enemy>();
-		enemy.OnDamageTaken(this);
     }
 }

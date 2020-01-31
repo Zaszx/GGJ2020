@@ -9,6 +9,7 @@ public class Scene : MonoBehaviour
 	public Transform enemiesParent;
 	private List<Tower> towers = new List<Tower>();
 	public Base baseTower;
+	public GameObject arrowPrefab;
 
 	public List<Enemy> enemies = new List<Enemy>();
 

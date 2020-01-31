@@ -7,8 +7,9 @@ public class ArcherTower : Tower
     public override void Start()
     {
 		base.Start();
+        ProjectilePrefab = scene.arrowPrefab;
         SetTarget();
-        InvokeRepeating("Attack", 1.0f, 1.0f);
+        InvokeRepeating("Attack", 0, 1.0f);
     }
 
 	public override void Update()
