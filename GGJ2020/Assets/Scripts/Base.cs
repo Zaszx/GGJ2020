@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherTower : Tower
+public class Base : Tower
 {
-    public override void Start()
-    {
+	public override void Start()
+	{
 		base.Start();
 
-    }
+	}
 
 	public override void Update()
-    {
+	{
 		base.Update();
 
-    }
+	}
 }
