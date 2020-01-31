@@ -25,7 +25,7 @@ public class Scene : MonoBehaviour
 	
     void Update()
     {
-        if(enemies.Count == 0 || Random.value < 0.01f)
+        if(enemies.Count == 0 || Random.value < 0.001f)
 		{
 			SpawnEnemy();
 		}
@@ -33,12 +33,14 @@ public class Scene : MonoBehaviour
 
 	public void OnTowerDestroyed(Tower tower)
 	{
-
+		towers.Remove(tower);
+		GameObject.Destroy(tower.gameObject);
 	}
 
 	public void OnEnemyKilled(Enemy enemy)
 	{
-
+		enemies.Remove(enemy);
+		GameObject.Destroy(enemy.gameObject);
 	}
 
 	public void SpawnEnemy()

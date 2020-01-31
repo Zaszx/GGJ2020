@@ -20,7 +20,11 @@ public class Enemy : MonoBehaviour
 
 	public virtual void OnDamageTaken(Tower hittingTower)
 	{
-
+		health = health - hittingTower.damage;
+		if(health <= 0)
+		{
+			scene.OnEnemyKilled(this);
+		}
 	}
 
 	public virtual void OnDeath()

@@ -60,7 +60,6 @@ public class Tower : MonoBehaviour
             return;
         }
         Enemy enemy = target.GetComponent<Enemy>();
-        enemy.health -= damage;
-        return;
+		enemy.OnDamageTaken(this);
     }
 }
