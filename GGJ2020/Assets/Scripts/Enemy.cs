@@ -11,8 +11,7 @@ public class Enemy : MonoBehaviour
 	
     public virtual void Start()
     {
-        
-    }
+	}
 
 	public virtual void OnSpawn()
 	{

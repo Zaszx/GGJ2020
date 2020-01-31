@@ -14,7 +14,8 @@ public class Goblin : Enemy
 
     public override void Start()
     {
-        
+		health = 100;
+		damage = 8;
     }
 
 	public override void OnSpawn()
