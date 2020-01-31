@@ -55,12 +55,7 @@ public class Tower : MonoBehaviour
 
     public virtual void Attack()
     {
-        if (target == null)
-        {
-            Debug.Log("No Target in range for " + this.transform.name);
-            return;
-        }
-        else
+        if (target != null)
         {
             GameObject projectile = GameObject.Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
             projectile.GetComponent<Projectile>().targetEnemy = target;

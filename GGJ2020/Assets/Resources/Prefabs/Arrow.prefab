@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2160714375331585104}
   - component: {fileID: 2160714375331585105}
   - component: {fileID: 2837112069395723255}
-  - component: {fileID: 4220427028468781055}
+  - component: {fileID: 8598439512925038165}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -97,29 +97,16 @@ MonoBehaviour:
   speed: 0.5
   targetEnemy: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
---- !u!61 &4220427028468781055
-BoxCollider2D:
+--- !u!65 &8598439512925038165
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2160714375331585106}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.47, y: 5.29}
-    newSize: {x: 0.47, y: 5.29}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47, y: 5.29}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.47, y: 5.29, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

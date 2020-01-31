@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
 	
     public virtual void Start()
     {
-		this.gameObject.tag = "Enemy";
 	}
 
 	public virtual void OnSpawn()
