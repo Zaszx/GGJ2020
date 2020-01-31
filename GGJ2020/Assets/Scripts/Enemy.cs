@@ -11,16 +11,16 @@ public class Enemy : MonoBehaviour
 	
     public virtual void Start()
     {
+		this.gameObject.tag = "Enemy";
 	}
 
 	public virtual void OnSpawn()
 	{
-
 	}
 
-	public virtual void OnDamageTaken(Tower hittingTower)
+	public virtual void OnDamageTaken(Projectile hittingProjectile)
 	{
-		health = health - hittingTower.damage;
+		health = health - hittingProjectile.damage;
 		if(health <= 0)
 		{
 			scene.OnEnemyKilled(this);
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
 	public virtual void OnDeath()
 	{
-
+		Destroy(this.gameObject);
 	}
 
 	public virtual void Update()
