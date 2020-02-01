@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Healthbar : MonoBehaviour
 {
 	public Transform attachedEntity;
+	public Transform healthbarParent;
 
 	public Image healthbarImage;
 
@@ -30,7 +31,7 @@ public class Healthbar : MonoBehaviour
 		if(attachedEntity != null)
 		{
 			Vector3 wantedPos = Camera.main.WorldToScreenPoint(attachedEntity.position + Vector3.up * 0.5f);
-			healthbarImage.transform.position = wantedPos;
+			healthbarParent.position = wantedPos;
 		}
 	}
 }

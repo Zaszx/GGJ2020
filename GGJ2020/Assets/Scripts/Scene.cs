@@ -51,12 +51,12 @@ public class Scene : MonoBehaviour
 
 	public void SpawnEnemy()
 	{
-		GameObject enemyPrefab = Random.value < 1 ? Prefabs.DragonPrefab : Prefabs.GoblinPrefab;
+		GameObject enemyPrefab = Random.value < 0.5f ? Prefabs.DragonPrefab : Prefabs.GoblinPrefab;
 		Enemy newEnemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
 		newEnemy.scene = this;
 		
 		Vector2 random2dpos = Random.insideUnitCircle.normalized * 50.0f;
-		newEnemy.transform.position = new Vector3(random2dpos.x, 1.0f, random2dpos.y);
+		newEnemy.transform.position = new Vector3(random2dpos.x, 0.5f, random2dpos.y);
 		newEnemy.OnSpawn();
 
 		enemies.Add(newEnemy);

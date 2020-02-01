@@ -12,6 +12,8 @@ public class Tower : MonoBehaviour
 	public Transform target;
     public GameObject ProjectilePrefab;
 
+	public Healthbar healthbar;
+
     public Scene scene;
 
 	public virtual void Start()
@@ -19,6 +21,8 @@ public class Tower : MonoBehaviour
 		scene = GameObject.FindObjectOfType<Scene>();
 
 		maxHealth = health;
+
+		healthbar.Init(maxHealth);
     }
 
     public virtual void Update()
@@ -29,6 +33,7 @@ public class Tower : MonoBehaviour
 	public virtual void OnDamageTaken(Enemy enemy)
 	{
 		health = health - enemy.damage;
+		healthbar.SetHealth(health);
 		if(health <= 0)
 		{
 			scene.OnTowerDestroyed(this);
@@ -38,9 +43,10 @@ public class Tower : MonoBehaviour
 	public virtual void OnRepaired(int repairAmount)
 	{
 		health = Mathf.Min(maxHealth, health + repairAmount);
+		healthbar.SetHealth(health);
 	}
 
-    public virtual void SetTarget()
+	public virtual void SetTarget()
     {
         float min_distance = 0;
         foreach (Transform e in scene.enemiesParent)
