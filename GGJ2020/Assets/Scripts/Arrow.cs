@@ -15,11 +15,12 @@ public class Arrow : Projectile
     public override void Update()
     {
         base.Update();
+        //setRotation();
     }
 
     private void setRotation()
     {
-        float angle = Vector3.Angle(direction,Vector3.up);
-        transform.rotation = Quaternion.Euler(0,0,angle);
+        //float angle = Vector3.Angle(direction,Vector3.up);
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 }
