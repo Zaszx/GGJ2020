@@ -44,16 +44,22 @@ public class Scene : MonoBehaviour
 		GameObject.Destroy(enemy.gameObject);
 	}
 
+	public Tower GetRandomTower()
+	{
+		return towers[Random.Range(0, towers.Count)];
+	}
+
 	public void SpawnEnemy()
 	{
-		Goblin newGoblin = Instantiate(Prefabs.GoblinPrefab).GetComponent<Goblin>();
-		newGoblin.scene = this;
+		GameObject enemyPrefab = Random.value < 1 ? Prefabs.DragonPrefab : Prefabs.GoblinPrefab;
+		Enemy newEnemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
+		newEnemy.scene = this;
 
-		newGoblin.transform.position = Random.insideUnitCircle.normalized * 6.0f;
-		newGoblin.OnSpawn();
+		newEnemy.transform.position = Random.insideUnitCircle.normalized * 6.0f;
+		newEnemy.OnSpawn();
 
-		enemies.Add(newGoblin);
-		newGoblin.transform.SetParent(enemiesParent);
+		enemies.Add(newEnemy);
+		newEnemy.transform.SetParent(enemiesParent);
 	}
 
 	public Tower GetClosestTowerToPos(Vector3 position, float aggroRange)
