@@ -57,8 +57,11 @@ public class Tower : MonoBehaviour
     {
         if (target != null)
         {
+            var proj = projectile.GetComponent<Projectile>();
             GameObject projectile = GameObject.Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
-            projectile.GetComponent<Projectile>().targetEnemy = target;
+            proj.targetEnemy = target;
+            proj.targetSpeed = target.GetComponent<Enemy>().movespeed;
+            proj.targetDirection = target.GetComponent<Enemy>().direction;
         }
     }
 }

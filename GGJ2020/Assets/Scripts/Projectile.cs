@@ -10,27 +10,37 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public Transform targetEnemy;
     [HideInInspector]
+    public float targetSpeed;
+    [HideInInspector]
+    public Vector3 targetDirection;
+    [HideInInspector]
     public Vector3 direction;
     private float _distance;
+    private Vector3 destination;
     public virtual void Start()
     {
-        direction = (targetEnemy.transform.position - transform.position).normalized;
+        destination = CollisionCourse.CalculateInterceptionPoint(targetEnemy.position ,transform.position, targetDirection*targetSpeed, speed);
+        direction = (destination - transform.position).normalized;
     }
 
     public virtual void Update()
     {
         if (targetEnemy != null)
         {
-            Vector3 difference = targetEnemy.transform.position - transform.position;
-            _distance = difference.magnitude;
-            direction = difference.normalized;
-            transform.position += speed * direction * Time.deltaTime;
+            Move();
             if (_distance < hitTreshold)
             {
                 targetEnemy.GetComponent<Enemy>().OnDamageTaken(this);
                 GameObject.Destroy(this.gameObject);
             }
         }
+        else if (_distance > -2) Move();
         else GameObject.Destroy(this.gameObject);
+    }
+
+    public void Move()
+    {
+        _distance = (destination - transform.position).magnitude;
+        transform.position += speed * direction * Time.deltaTime;
     }
 }

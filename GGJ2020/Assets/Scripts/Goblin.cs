@@ -51,8 +51,8 @@ public class Goblin : Enemy
 		}
 		else
 		{
-			Vector3 direction = (targetTower.transform.position - transform.position).normalized;
-			transform.position += direction * Time.deltaTime;
+			direction = (targetTower.transform.position - transform.position).normalized;
+			transform.position += movespeed * direction * Time.deltaTime;
 		}
     }
 }
