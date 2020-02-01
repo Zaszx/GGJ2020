@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
 	private int maxHealth;
 	public int damage;
 	public float range;
+    public float attackRate;
 	public Transform target;
 	public Healthbar healthbar;
     public GameObject ProjectilePrefab;
