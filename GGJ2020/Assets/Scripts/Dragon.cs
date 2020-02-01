@@ -25,8 +25,6 @@ public class Dragon : Enemy
 
 	public override void Update()
     {
-		base.Update();
-
 		Vector3 targetWithoutY = targetPosition;
 		targetWithoutY.y = 0;
 
@@ -50,5 +48,6 @@ public class Dragon : Enemy
 			direction.y = 0;
 			transform.position += direction * Time.deltaTime * movespeed;
 		}
-    }
+		base.Update();
+	}
 }

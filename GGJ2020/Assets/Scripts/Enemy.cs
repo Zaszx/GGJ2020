@@ -35,7 +35,8 @@ public class Enemy : MonoBehaviour
 
 	public virtual void Update()
     {
-        
+		if(direction != null)
+			transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
 	//this function converts a Vector2 direction to an index to a slice around a circle

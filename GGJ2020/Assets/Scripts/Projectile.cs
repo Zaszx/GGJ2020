@@ -16,10 +16,15 @@ public class Projectile : MonoBehaviour
     public Vector3 targetDirection;
     [HideInInspector]
     public Vector3 direction;
-    private float _distance;
-    private float _distanceToTarget;
-    private Vector3 destination;
-    private bool pastPoint;
+    [HideInInspector]
+    public bool pastPoint;
+    [HideInInspector]
+    public Vector3 destination;
+    [HideInInspector]
+    public float _distanceToTarget;
+    [HideInInspector]
+    public float _distance;
+
     public virtual void Start()
     {
         pastPoint = false;

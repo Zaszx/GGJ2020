@@ -9,7 +9,6 @@ public class Scene : MonoBehaviour
 	public Transform enemiesParent;
 	private List<Tower> towers = new List<Tower>();
 	public Base baseTower;
-	public GameObject arrowPrefab;
 
 	public List<Enemy> enemies = new List<Enemy>();
 
@@ -51,7 +50,15 @@ public class Scene : MonoBehaviour
 
 	public void SpawnEnemy()
 	{
-		GameObject enemyPrefab = Random.value < 0.5f ? Prefabs.DragonPrefab : Prefabs.GoblinPrefab;
+		GameObject enemyPrefab;
+		float randValue = Random.value;
+		if (randValue < 0.1f)
+			enemyPrefab = Prefabs.DragonPrefab;
+		else if (randValue < 0.3f)
+			enemyPrefab = Prefabs.CatapultPrefab;
+		else
+			enemyPrefab = Prefabs.GoblinPrefab;
+
 		Enemy newEnemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
 		newEnemy.scene = this;
 		

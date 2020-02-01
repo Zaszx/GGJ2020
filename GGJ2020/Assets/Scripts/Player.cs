@@ -8,18 +8,25 @@ public class Player : MonoBehaviour
 	public bool isPlayer1;
 
 	public float repairCooldown = 0.3f;
+	public float moveSpeed = 2f;
 	private float currentRepairCooldown = 0;
 
-    void Start()
+	private static Vector3 up = new Vector3(1, 0, 1).normalized;
+	private static Vector3 down = up * -1;
+	private static Vector3 left = new Vector3(-1, 0, 1).normalized;
+	private static Vector3 right = left * -1;
+
+	private Vector3 MoveDir;
+
+
+	void Start()
     {
-        
     }
 	
     void Update()
     {
 		HandleMovement();
 		HandleRepair();
-
 	}
 
 	void HandleRepair()
@@ -27,7 +34,7 @@ public class Player : MonoBehaviour
 		currentRepairCooldown += Time.deltaTime;
 		if(currentRepairCooldown >= repairCooldown)
 		{
-			List<Tower> towersInRange = scene.GetTowersInRange(transform.position, 0.1f);
+			List<Tower> towersInRange = scene.GetTowersInRange(transform.position, 4f);
 			towersInRange.ForEach(t => t.OnRepaired(1));
 			if(towersInRange.Count > 0)
 			{
@@ -42,38 +49,38 @@ public class Player : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.W))
 			{
-				transform.position += Vector3.up * Time.deltaTime;
+				transform.position += moveSpeed * up * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.S))
 			{
-				transform.position += Vector3.down * Time.deltaTime;
+				transform.position += moveSpeed * down * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.A))
 			{
-				transform.position += Vector3.left * Time.deltaTime;
+				transform.position += moveSpeed * left * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.D))
 			{
-				transform.position += Vector3.right * Time.deltaTime;
+				transform.position += moveSpeed * right * Time.deltaTime;
 			}
 		}
 		else
 		{
 			if (Input.GetKey(KeyCode.UpArrow))
 			{
-				transform.position += Vector3.up * Time.deltaTime;
+				transform.position += moveSpeed * up * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.DownArrow))
 			{
-				transform.position += Vector3.down * Time.deltaTime;
+				transform.position += moveSpeed * down * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.LeftArrow))
 			{
-				transform.position += Vector3.left * Time.deltaTime;
+				transform.position += moveSpeed * left * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.RightArrow))
 			{
-				transform.position += Vector3.right * Time.deltaTime;
+				transform.position += moveSpeed * right * Time.deltaTime;
 			}
 		}
 	}
