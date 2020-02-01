@@ -104,10 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8693a6d85cd0af4b81b5e60879151c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
+  damage: 25
+  speed: 20
   hitTreshold: 0
-  missDistance: 0
+  missDistance: 0.5
   targetEnemy: {fileID: 0}
   targetSpeed: 0
   targetDirection: {x: 0, y: 0, z: 0}
