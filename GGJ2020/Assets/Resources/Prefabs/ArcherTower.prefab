@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 20
+  damage: 25
   range: 10
   attackRate: 1
   target: {fileID: 0}
@@ -180,16 +180,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6591602174577877058, guid: 7e5cea8d0f01c5d4698418b5862120b5,
-        type: 3}
-      propertyPath: attachedEntity
-      value: 
-      objectReference: {fileID: 6529643710522746272}
     - target: {fileID: 6380661927921838932, guid: 7e5cea8d0f01c5d4698418b5862120b5,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6591602174577877058, guid: 7e5cea8d0f01c5d4698418b5862120b5,
+        type: 3}
+      propertyPath: attachedEntity
+      value: 
+      objectReference: {fileID: 6529643710522746272}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e5cea8d0f01c5d4698418b5862120b5, type: 3}
 --- !u!4 &8225590460055359889 stripped
