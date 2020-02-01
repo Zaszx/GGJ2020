@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
 	public int health;
 	public int damage;
+	public float movespeed;
+	public Vector3 direction;
 
 	public Scene scene;
 	

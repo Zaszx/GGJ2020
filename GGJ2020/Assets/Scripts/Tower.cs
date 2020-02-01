@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
 	private int maxHealth;
 	public int damage;
 	public float range;
+    public float attackRate;
 	public Transform target;
 	public Healthbar healthbar;
     public GameObject ProjectilePrefab;
@@ -67,7 +68,10 @@ public class Tower : MonoBehaviour
         if (target != null)
         {
             GameObject projectile = GameObject.Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
-            projectile.GetComponent<Projectile>().targetEnemy = target;
+            var proj = projectile.GetComponent<Projectile>();
+            proj.targetEnemy = target;
+            proj.targetSpeed = target.GetComponent<Enemy>().movespeed;
+            proj.targetDirection = target.GetComponent<Enemy>().direction;
         }
     }
 }

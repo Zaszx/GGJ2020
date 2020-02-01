@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 40
   damage: 3
+  movespeed: 1
   scene: {fileID: 0}
   targetTower: {fileID: 0}
   attackRange: 0.3

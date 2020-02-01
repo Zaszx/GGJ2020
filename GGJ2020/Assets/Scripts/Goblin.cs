@@ -63,7 +63,7 @@ public class Goblin : Enemy
 		else
 		{
 			Vector3 direction = (targetTower.transform.position - transform.position).normalized;
-			transform.position += direction * Time.deltaTime;
+			transform.position += movespeed * direction * Time.deltaTime;
 			int runAnimationIndex = DirectionToIndex(direction, 8);
 			animator.Play(runDirections[runAnimationIndex]);
 		}
