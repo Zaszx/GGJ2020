@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
 	public int health;
+	private int maxHealth;
 	public int damage;
 	public float range;
 	public Transform target;
@@ -17,6 +18,8 @@ public class Tower : MonoBehaviour
     {
 		scene = GameObject.FindObjectOfType<Scene>();
 		healthbar.Init(health);
+
+		maxHealth = health;
     }
 
     public virtual void Update()
@@ -38,6 +41,12 @@ public class Tower : MonoBehaviour
 		}
 	}
 
+	public virtual void OnRepaired(int repairAmount)
+	{
+		health = Mathf.Min(maxHealth, health + repairAmount);
+		healthbar.SetHealth(health);
+	}
+
     public virtual void SetTarget()
     {
         float min_distance = 0;
@@ -57,8 +66,8 @@ public class Tower : MonoBehaviour
     {
         if (target != null)
         {
-            var proj = projectile.GetComponent<Projectile>();
             GameObject projectile = GameObject.Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+            var proj = projectile.GetComponent<Projectile>();
             proj.targetEnemy = target;
             proj.targetSpeed = target.GetComponent<Enemy>().movespeed;
             proj.targetDirection = target.GetComponent<Enemy>().direction;

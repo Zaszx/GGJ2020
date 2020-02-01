@@ -65,4 +65,9 @@ public class Scene : MonoBehaviour
 
 		return result;
 	}
+
+	public List<Tower> GetTowersInRange(Vector3 position, float range)
+	{
+		return towers.Where(tower => Vector3.Distance(position, tower.transform.position) <= range).ToList();
+	}
 }

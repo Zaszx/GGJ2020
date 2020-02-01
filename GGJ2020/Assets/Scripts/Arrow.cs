@@ -8,13 +8,13 @@ public class Arrow : Projectile
     public override void Start()
     {
         base.Start();
+        setRotation();
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
-        setRotation();
     }
 
     private void setRotation()
