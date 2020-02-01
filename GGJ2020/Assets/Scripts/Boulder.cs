@@ -18,6 +18,7 @@ public class Boulder : Projectile
     public override void Update()
     {
         transform.position += speed * direction * Time.deltaTime;
+        _distanceToTarget = Vector3.Distance(targetEnemy.position, transform.position);
         if (_distanceToTarget < hitTreshold)
         {
             targetEnemy.GetComponent<Tower>().OnDamageTaken(parent);

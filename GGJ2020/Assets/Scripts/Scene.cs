@@ -9,11 +9,17 @@ public class Scene : MonoBehaviour
 	public Transform enemiesParent;
 	private List<Tower> towers = new List<Tower>();
 	public Base baseTower;
+	public float SpawnRate = 3.5f;
 
 	public List<Enemy> enemies = new List<Enemy>();
 
+	private float _currentSpawnRate;
+	private float _spawnCounter = 0;
+
     void Start()
     {
+		_spawnCounter = 0;
+		_currentSpawnRate = SpawnRate + Random.value;
 		InitTowers();
     }
 
@@ -25,11 +31,30 @@ public class Scene : MonoBehaviour
 	
     void Update()
     {
-        if(enemies.Count == 0 || Random.value < 0.001f)
+		int id;
+		if (enemies.Count == 0 || _spawnCounter > _currentSpawnRate)
 		{
-			SpawnEnemy();
+			float randValue = Random.value;
+			if (randValue < 0.1f)
+				id = 0; //goblin
+			else if (randValue < 0.9f)
+				id = 1; //catapult
+			else
+				id = 2; //dragon
+			SpawnEnemy(id);
 		}
-    }
+		else
+		{
+			_spawnCounter += Time.deltaTime;
+			if (Input.GetKeyDown(KeyCode.X))
+				SpawnEnemy(0);
+			if (Input.GetKeyDown(KeyCode.C))
+				SpawnEnemy(1);
+			if (Input.GetKeyDown(KeyCode.V))
+				SpawnEnemy(2);
+		}
+
+	}
 
 	public void OnTowerDestroyed(Tower tower)
 	{
@@ -48,26 +73,37 @@ public class Scene : MonoBehaviour
 		return towers[Random.Range(0, towers.Count)];
 	}
 
-	public void SpawnEnemy()
+	public void SpawnEnemy(int enemyId)
 	{
 		GameObject enemyPrefab;
-		float randValue = Random.value;
-		if (randValue < 0.1f)
-			enemyPrefab = Prefabs.DragonPrefab;
-		else if (randValue < 0.3f)
-			enemyPrefab = Prefabs.CatapultPrefab;
-		else
-			enemyPrefab = Prefabs.GoblinPrefab;
+		switch (enemyId)
+		{
+			case 0:
+				enemyPrefab = Prefabs.GoblinPrefab;
+				break;
+			case 1:
+				enemyPrefab = Prefabs.CatapultPrefab;
+				break;
+			case 2:
+				enemyPrefab = Prefabs.DragonPrefab;
+				break;
+			default:
+				enemyPrefab = Prefabs.GoblinPrefab;
+				break;
+		}
 
 		Enemy newEnemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
 		newEnemy.scene = this;
 		
-		Vector2 random2dpos = Random.insideUnitCircle.normalized * 50.0f;
+		Vector2 random2dpos = Random.insideUnitCircle.normalized * 40.0f;
 		newEnemy.transform.position = new Vector3(random2dpos.x, 0.5f, random2dpos.y);
 		newEnemy.OnSpawn();
 
 		enemies.Add(newEnemy);
 		newEnemy.transform.SetParent(enemiesParent);
+
+		_currentSpawnRate = SpawnRate + Random.value;
+		_spawnCounter = 0;
 	}
 
 	public Tower GetClosestTowerToPos(Vector3 position, float aggroRange)

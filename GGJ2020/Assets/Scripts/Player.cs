@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
 	public Scene scene;
 	public bool isPlayer1;
 
-	public float repairCooldown = 0.3f;
-	public float moveSpeed = 2f;
+	public float repairCooldown = 0.2f;
+	public float moveSpeed = 5f;
 	private float currentRepairCooldown = 0;
 
 	private static Vector3 up = new Vector3(1, 0, 1).normalized;

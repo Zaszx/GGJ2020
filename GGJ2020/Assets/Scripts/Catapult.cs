@@ -70,7 +70,8 @@ public class Catapult : Enemy
 
 	public void Throw()
 	{
-		var boulder = GameObject.Instantiate(_boulder, transform.position, Quaternion.identity).GetComponent<Boulder>();
+		GetComponent<Animator>().SetTrigger("AttackTrigger");
+		var boulder = GameObject.Instantiate(_boulder, transform.position + (Vector3.up + transform.forward * -0.5f) , Quaternion.identity).GetComponent<Boulder>();
 		boulder.parent = this;
 		boulder.targetEnemy = targetTower.transform;
 		boulder.damage = damage;
