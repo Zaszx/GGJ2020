@@ -40,7 +40,13 @@ public class Goblin : Enemy
 		currentAttackCooldown += Time.deltaTime;
 		UpdateTarget();
 
-		Vector3 distanceToTarget = (targetTower.transform.position - transform.position);
+		Vector3 targetWithoutY = targetTower.transform.position;
+		targetWithoutY.y = 0;
+
+		Vector3 posWithoutY = transform.position;
+		posWithoutY.y = 0;
+		
+		Vector3 distanceToTarget = (targetWithoutY - posWithoutY);
 		if(distanceToTarget.magnitude <= attackRange)
 		{
 			if (currentAttackCooldown >= attackCooldown)
@@ -51,7 +57,7 @@ public class Goblin : Enemy
 		}
 		else
 		{
-			Vector3 direction = (targetTower.transform.position - transform.position).normalized;
+			Vector3 direction = (targetWithoutY - posWithoutY).normalized;
 			transform.position += movespeed * direction * Time.deltaTime;
 		}
 	}
