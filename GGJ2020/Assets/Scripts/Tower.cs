@@ -10,7 +10,6 @@ public class Tower : MonoBehaviour
 	public float range;
     public float attackRate;
 	public Transform target;
-	public Healthbar healthbar;
     public GameObject ProjectilePrefab;
 
     public Scene scene;
@@ -18,7 +17,6 @@ public class Tower : MonoBehaviour
 	public virtual void Start()
     {
 		scene = GameObject.FindObjectOfType<Scene>();
-		healthbar.Init(health);
 
 		maxHealth = health;
     }
@@ -33,19 +31,13 @@ public class Tower : MonoBehaviour
 		health = health - enemy.damage;
 		if(health <= 0)
 		{
-			healthbar.SetHealth(0);
 			scene.OnTowerDestroyed(this);
-		}
-		else
-		{
-			healthbar.SetHealth(health);
 		}
 	}
 
 	public virtual void OnRepaired(int repairAmount)
 	{
 		health = Mathf.Min(maxHealth, health + repairAmount);
-		healthbar.SetHealth(health);
 	}
 
     public virtual void SetTarget()

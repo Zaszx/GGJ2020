@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6529643710522746272}
-  - component: {fileID: 7015972614794192965}
-  - component: {fileID: 4516464549414179187}
-  - component: {fileID: 5037894582865695594}
-  - component: {fileID: 3614588684051338383}
+  - component: {fileID: 989861559817243005}
+  - component: {fileID: 1602435931236500964}
+  - component: {fileID: 2339285035432560970}
+  - component: {fileID: 3215902020114621698}
   m_Layer: 0
-  m_Name: Goblin
+  m_Name: Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659884018268865425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.2, z: 0}
+  m_LocalPosition: {x: -8.2, y: 5.5, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7015972614794192965
+--- !u!33 &989861559817243005
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659884018268865425}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4516464549414179187
+--- !u!23 &1602435931236500964
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 307efb7f577d06d419d31e9d50b71ac2, type: 2}
+  - {fileID: 2100000, guid: 1e2423e63ce551d4b973c5a67cd5506f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5037894582865695594
+--- !u!65 &2339285035432560970
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3614588684051338383
+--- !u!114 &3215902020114621698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,15 +101,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659884018268865425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16cecd066637e254b990537662eb0c2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f29885958bc4f749b0868f813f4c2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  damage: 5
-  movespeed: 5
+  health: 100
+  damage: 10
+  movespeed: 10
   direction: {x: 0, y: 0, z: 0}
   scene: {fileID: 0}
-  targetTower: {fileID: 0}
-  attackRange: 2
-  attackCooldown: 1
-  aggroRange: 10
