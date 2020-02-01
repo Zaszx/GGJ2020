@@ -9,6 +9,7 @@ public class Goblin : Enemy
 
 	public float attackCooldown = 1.0f;
 	private float currentAttackCooldown = 0;
+	private float _movespeed_original;
 
 	public float aggroRange = 20;
 
@@ -16,7 +17,8 @@ public class Goblin : Enemy
     {
 		health = 100;
 		damage = 8;
-    }
+		_movespeed_original = movespeed;
+	}
 
 	public override void OnSpawn()
 	{
@@ -47,8 +49,12 @@ public class Goblin : Enemy
 		posWithoutY.y = 0;
 		
 		Vector3 distanceToTarget = (targetWithoutY - posWithoutY);
-		if(distanceToTarget.magnitude <= attackRange)
+
+		direction = (targetWithoutY - posWithoutY).normalized;
+
+		if (distanceToTarget.magnitude <= attackRange)
 		{
+			movespeed = 0;
 			if (currentAttackCooldown >= attackCooldown)
 			{
 				targetTower.OnDamageTaken(this);
@@ -57,7 +63,7 @@ public class Goblin : Enemy
 		}
 		else
 		{
-			direction = (targetWithoutY - posWithoutY).normalized;
+			movespeed = _movespeed_original;
 			transform.position += movespeed * direction * Time.deltaTime;
 		}
 	}
