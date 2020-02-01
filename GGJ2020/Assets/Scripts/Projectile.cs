@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
                 GameObject.Destroy(this.gameObject);
             }
         }
-        if (pastPoint && _distance > 0.5) GameObject.Destroy(this.gameObject);
+        if (pastPoint && _distance > 1) GameObject.Destroy(this.gameObject);
     }
 
     public void Move()
