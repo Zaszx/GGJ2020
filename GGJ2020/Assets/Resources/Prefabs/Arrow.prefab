@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   speed: 40
-  hitTreshold: 1
+  hitTreshold: 2
   missDistance: 8
   targetEnemy: {fileID: 0}
   targetSpeed: 0

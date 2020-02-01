@@ -23,6 +23,8 @@ public class Projectile : MonoBehaviour
     public virtual void Start()
     {
         pastPoint = false;
+        Debug.Log("Target Direction: " + targetDirection);
+        Debug.Log("Target Speed: " + targetSpeed);
         destination = CollisionCourse.CalculateInterceptionPoint(targetEnemy.position ,transform.position, targetDirection*targetSpeed, speed);
         direction = (destination - transform.position).normalized;
     }
