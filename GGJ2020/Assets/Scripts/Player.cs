@@ -19,14 +19,18 @@ public class Player : MonoBehaviour
 	private Vector3 MoveDir;
 
 
-	void Start()
+	public void Start()
     {
     }
 	
-    void Update()
+    public void Update()
     {
-		HandleMovement();
 		HandleRepair();
+	}
+
+	public void FixedUpdate()
+	{
+		HandleMovement();
 	}
 
 	void HandleRepair()
@@ -45,42 +49,44 @@ public class Player : MonoBehaviour
 
 	void HandleMovement()
 	{
+		var rigid = GetComponent<Rigidbody>();
+		Quaternion rot = transform.rotation;
 		if (isPlayer1)
 		{
 			if (Input.GetKey(KeyCode.W))
 			{
-				transform.position += moveSpeed * up * Time.deltaTime;
+				rigid.MovePosition(transform.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
 			}
 			if (Input.GetKey(KeyCode.S))
 			{
-				transform.position += moveSpeed * down * Time.deltaTime;
+				rigid.MovePosition(transform.position - transform.forward * moveSpeed * Time.fixedDeltaTime);
 			}
 			if (Input.GetKey(KeyCode.A))
 			{
-				transform.position += moveSpeed * left * Time.deltaTime;
+				rigid.MoveRotation(Quaternion.LookRotation(transform.forward - transform.right*3*Time.fixedDeltaTime,Vector3.up));
 			}
 			if (Input.GetKey(KeyCode.D))
 			{
-				transform.position += moveSpeed * right * Time.deltaTime;
+				rigid.MoveRotation(Quaternion.LookRotation(transform.forward + transform.right * 3 * Time.fixedDeltaTime, Vector3.up));
 			}
 		}
 		else
 		{
 			if (Input.GetKey(KeyCode.UpArrow))
 			{
-				transform.position += moveSpeed * up * Time.deltaTime;
+				rigid.MovePosition(transform.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
 			}
 			if (Input.GetKey(KeyCode.DownArrow))
 			{
-				transform.position += moveSpeed * down * Time.deltaTime;
+				rigid.MovePosition(transform.position - transform.forward * moveSpeed * Time.fixedDeltaTime);
 			}
 			if (Input.GetKey(KeyCode.LeftArrow))
 			{
-				transform.position += moveSpeed * left * Time.deltaTime;
+				rigid.MoveRotation(Quaternion.LookRotation(transform.forward - transform.right * 3 * Time.fixedDeltaTime, Vector3.up));
 			}
 			if (Input.GetKey(KeyCode.RightArrow))
 			{
-				transform.position += moveSpeed * right * Time.deltaTime;
+				rigid.MoveRotation(Quaternion.LookRotation(transform.forward + transform.right * 3 * Time.fixedDeltaTime, Vector3.up));
 			}
 		}
 	}

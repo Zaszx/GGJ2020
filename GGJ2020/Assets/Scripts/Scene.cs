@@ -9,17 +9,23 @@ public class Scene : MonoBehaviour
 	public Transform enemiesParent;
 	private List<Tower> towers = new List<Tower>();
 	public Base baseTower;
-	public float SpawnRate = 3.5f;
+	public float DragonSpawnRate = 30f;
+	public float CatapultSpawnRate = 15f;
+	public float GoblinSpawnRate = 7f;
+	public int DragonMax = 1;
+	public int CatapultMax = 3;
+	public int GoblinMax = 5;
 
 	public List<Enemy> enemies = new List<Enemy>();
 
 	private float _currentSpawnRate;
-	private float _spawnCounter = 0;
+	private int Dcount, Ccount, Gcount;
+	private float DspawnCounter, CspawnCounter, GspawnCounter;
 
-    void Start()
+	void Start()
     {
-		_spawnCounter = 0;
-		_currentSpawnRate = SpawnRate + Random.value;
+		Dcount = Ccount = Gcount = 0;
+		DspawnCounter = CspawnCounter = GspawnCounter = 0;
 		InitTowers();
     }
 
@@ -31,28 +37,25 @@ public class Scene : MonoBehaviour
 	
     void Update()
     {
-		int id;
-		if (enemies.Count == 0 || _spawnCounter > _currentSpawnRate)
+		if (Gcount <= GoblinMax && enemies.Count == 0 || GspawnCounter > GoblinSpawnRate + Random.value)
 		{
-			float randValue = Random.value;
-			if (randValue < 0.1f)
-				id = 0; //goblin
-			else if (randValue < 0.9f)
-				id = 1; //catapult
-			else
-				id = 2; //dragon
-			SpawnEnemy(id);
+			SpawnEnemy(0);
+			GspawnCounter = 0;
 		}
-		else
+		if (Ccount <= CatapultMax && CspawnCounter > CatapultSpawnRate + Random.value)
 		{
-			_spawnCounter += Time.deltaTime;
-			if (Input.GetKeyDown(KeyCode.X))
-				SpawnEnemy(0);
-			if (Input.GetKeyDown(KeyCode.C))
-				SpawnEnemy(1);
-			if (Input.GetKeyDown(KeyCode.V))
-				SpawnEnemy(2);
+			SpawnEnemy(1);
+			CspawnCounter = 0;
 		}
+		if (Dcount <= DragonMax && DspawnCounter > DragonSpawnRate + Random.value)
+		{
+			SpawnEnemy(2);
+			DspawnCounter = 0;
+		}
+
+		DspawnCounter += Time.deltaTime;
+		CspawnCounter += Time.deltaTime;
+		GspawnCounter += Time.deltaTime;
 
 	}
 
@@ -101,9 +104,6 @@ public class Scene : MonoBehaviour
 
 		enemies.Add(newEnemy);
 		newEnemy.transform.SetParent(enemiesParent);
-
-		_currentSpawnRate = SpawnRate + Random.value;
-		_spawnCounter = 0;
 	}
 
 	public Tower GetClosestTowerToPos(Vector3 position, float aggroRange)
