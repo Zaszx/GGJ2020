@@ -90,36 +90,8 @@ public class Dragon : Enemy
 			{
 				UpdateTarget();
 			}
-
-		}
-		else if (DecayTimer > 0)
-		{
-			if (!deadanim)
-			{
-			animator.SetTrigger("Death");
-				deadanim = true;
-			}
-			float t = DecayTimer / _decayTimer;
-			DecayTimer -= 2*Time.deltaTime;
-			var color = GetComponent<Material>().color;
-			float a = Mathf.Lerp(255, 0, t);
-			transform.position = Vector3.Lerp((_deathPos - Vector3.up * 8), _deathPos, t);
-			GetComponent<Material>().color = new Color(color.r, color.g, color.b, a);
-
 		}
 		else GameObject.Destroy(this);
 		base.Update();
-	}
-
-	public override void OnDamageTaken(Projectile hittingProjectile)
-	{
-		if (health > 0)
-			health = health - hittingProjectile.damage;
-		else
-		{
-			dead = true;
-			_deathPos = transform.position;
-			scene.enemies.Remove(this);
-		}
 	}
 }
